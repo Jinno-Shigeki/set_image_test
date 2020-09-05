@@ -39,23 +39,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var text = '';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: RaisedButton(
+      body: Column(children: <Widget>[
+        TextField(
+          onChanged: (value) {
+            text = value;
+          },
+        ),
+        RaisedButton(
           child: Text('次へ'),
           textColor: Colors.white,
           color: Colors.blue,
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => NextPage()),
+              MaterialPageRoute(builder: (context) => NextPage(text)),
             );
           },
         ),
-      ),
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
